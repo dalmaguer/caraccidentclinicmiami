@@ -164,12 +164,12 @@
 			"text": "var(--wp--preset--color--dark)"
 		},
 		"spacing": {
-			"blockGap": "var(--wp--preset--spacing--50)",
+			"blockGap": "0",
 			"padding": {
 				"top": "0",
-				"right": "var(--wp--preset--spacing--50)",
+				"right": "0",
 				"bottom": "0",
-				"left": "var(--wp--preset--spacing--50)"
+				"left": "0"
 			}
 		},
 		"elements": {
