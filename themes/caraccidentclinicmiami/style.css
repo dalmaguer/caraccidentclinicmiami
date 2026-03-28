@@ -1,11 +1,15 @@
-/**
-Theme Name: Caraccidentclinicmiami
+/*
+Theme Name: Car Accident Clinic Miami
+Theme URI: http://caraccidentclinicmiami.localhost
 Author: dayreldev
-Author URI: http://wpastra.com/about/
-Description: Caraccidentclinicmiami is a fast, fully customizable, and beautiful theme!
+Author URI: https://github.com/dayreldev
+Description: A custom block theme for Car Accident Clinic Miami — a medical marketing site focused on lead generation for car accident injury patients.
 Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.9
+Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: caraccidentclinicmiami
-Template: astra
+Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-style
 */
