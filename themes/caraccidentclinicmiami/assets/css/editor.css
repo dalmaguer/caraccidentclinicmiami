@@ -1,4 +1,7 @@
 /* hide shortcode blocks */
-.wp-block-shortcode {
-	display: none;
+.wp-block-shortcode > * {
+	background-color: rgba(255, 165, 0, 0.2) !important;
+}
+.wp-block-shortcode * {
+	opacity: 0.75 !important;
 }
