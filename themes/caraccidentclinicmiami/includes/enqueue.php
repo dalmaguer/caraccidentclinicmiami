@@ -10,6 +10,7 @@
  * Enqueue block editor styles (editor only).
  */
 function cac_editor_styles() {
+	add_editor_style( 'assets/css/editor.css' );
 	add_editor_style( 'style.css' );
 }
 add_action( 'after_setup_theme', 'cac_editor_styles' );

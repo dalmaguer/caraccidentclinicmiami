@@ -68,7 +68,7 @@ Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-styl
 /* Plus icon (collapsed state) */
 .cac-doctors-accordion .wp-block-details > summary::after {
     content: '+';
-    font-size: 1.375rem;
+    font-size: 2rem;
     font-weight: 300;
     line-height: 1;
     color: #6B7280;
@@ -93,16 +93,8 @@ Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-styl
 }
 
 /* -----------------------------------------------
-   Doctors – Overlapping Images (mobile override)
+   Facilities – Media with Stats Pattern: Make video modal full viewport width on mobile for better UX and to avoid horizontal scrolling issues with the video player.
    ----------------------------------------------- */
-/* @media (max-width: 781px) {
-    .cac-doctors-images-flex {
-        flex-direction: column !important;
-    }
-    .cac-doctors-images-flex > .wp-block-group {
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-top: 0 !important;
-    }
-} */
-
+#cac-facilities-modal {
+    max-width: 100vw;
+}

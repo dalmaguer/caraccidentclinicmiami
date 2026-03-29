@@ -1,0 +1,4 @@
+/* hide shortcode blocks */
+.wp-block-shortcode {
+	display: none;
+}
