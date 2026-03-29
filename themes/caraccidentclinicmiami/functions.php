@@ -15,5 +15,8 @@ include_once get_template_directory() . '/includes/enqueue.php';
 include_once get_template_directory() . '/includes/blocks-setup.php';
 
 
+// Shortcodes
+include_once get_template_directory() . '/includes/shortcodes.php';
+
 // Helpers
 include_once get_template_directory() . '/helpers/icons.php';
