@@ -9,7 +9,7 @@
  */
 $img_url = get_template_directory_uri() . '/assets/images/placeholder_16x9.png';
 ?>
-<!-- wp:group {"metadata":{"patternName":"caraccidentclinicmiami/facilities-media-stats","name":"Facilities – Media with Stats","categories":["caraccidentclinicmiami/videos", "caraccidentclinicmiami/content"]},"align":"full","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"white"} -->
+<!-- wp:group {"metadata":{"patternName":"caraccidentclinicmiami/facilities-media-stats","name":"Facilities – Media with Stats","categories":["caraccidentclinicmiami","caraccidentclinicmiami/videos","caraccidentclinicmiami/content"]},"align":"full","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"white"} -->
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:5rem;padding-right:var(--wp--preset--spacing--50);padding-bottom:5rem;padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->
 <div class="wp-block-group"><!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"top":"3rem","left":"var:preset|spacing|80"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"45%","style":{"spacing":{"blockGap":"1.5rem"}}} -->
@@ -34,13 +34,13 @@ $img_url = get_template_directory_uri() . '/assets/images/placeholder_16x9.png';
 
 <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%"><!-- wp:group {"className":"relative overflow-visible"} -->
-<div class="wp-block-group relative overflow-visible"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full"><img src="<?php echo esc_url( $img_url ); ?>" alt="Modern medical technology"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:shortcode -->
+<div class="wp-block-group relative overflow-visible"><!-- wp:shortcode -->
 [cac_facilities_play_button label="Play Video"]
 <!-- /wp:shortcode -->
+
+<!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url($img_url); ?>" alt="Modern medical technology"/></figure>
+<!-- /wp:image -->
 
 <!-- wp:columns {"className":"!-mt-14 !gap-0"} -->
 <div class="wp-block-columns !-mt-14 !gap-0"><!-- wp:column -->
