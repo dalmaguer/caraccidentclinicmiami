@@ -20,3 +20,78 @@ Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-styl
     }
 }
 
+/* ===========================================
+   Doctors – Expert in Specialty Pattern
+   =========================================== */
+
+/* Accordion items */
+.cac-doctors-accordion .wp-block-details {
+    border-top: 1px solid #E5E7EB;
+}
+.cac-doctors-accordion .wp-block-details:last-child {
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* Summary (header row) */
+.cac-doctors-accordion .wp-block-details > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.125rem 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+/* Hide the native browser disclosure marker */
+.cac-doctors-accordion .wp-block-details > summary::-webkit-details-marker {
+    display: none;
+}
+.cac-doctors-accordion .wp-block-details > summary::marker {
+    content: none;
+}
+
+/* Plus icon (collapsed state) */
+.cac-doctors-accordion .wp-block-details > summary::after {
+    content: '+';
+    font-size: 1.375rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #6B7280;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+/* Active / open state – blue header background */
+.cac-doctors-accordion details[open] > summary {
+    background-color: #B2C8D5; /* secondary-light */
+    color: #111827;
+}
+
+/* Minus icon (expanded state) */
+.cac-doctors-accordion details[open] > summary::after {
+    content: '−';
+}
+
+/* Panel content spacing */
+.cac-doctors-accordion .wp-block-details > * + * {
+    margin-top: 0;
+}
+
+/* -----------------------------------------------
+   Doctors – Overlapping Images (mobile override)
+   ----------------------------------------------- */
+/* @media (max-width: 781px) {
+    .cac-doctors-images-flex {
+        flex-direction: column !important;
+    }
+    .cac-doctors-images-flex > .wp-block-group {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+    }
+} */
+
