@@ -4,7 +4,7 @@
 	"settings": {
 		"appearanceTools": true,
 		"layout": {
-			"contentSize": "calc(min(100vw, 1920px) - 4rem)",
+			"contentSize": "calc(min(100vw, 1200px) - 4rem)",
 			"wideSize": "1920px"
 		},
 		"useRootPaddingAwareAlignments": true,
@@ -14,7 +14,7 @@
 				{
 					"name": "Primary",
 					"slug": "primary",
-					"color": "#0E6F5D"
+					"color": "#0C2D48"
 				},
 				{
 					"name": "Primary Dark",
