@@ -21,6 +21,17 @@ Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-styl
 }
 
 /* ===========================================
+   Medical Process – Registration Steps Pattern
+   =========================================== */
+
+/* Keep step rows horizontal on mobile (they're compact enough) */
+@media (max-width: 781px) {
+    .cac-process-step.wp-block-group {
+        flex-wrap: nowrap !important;
+    }
+}
+
+/* ===========================================
    Doctors – Expert in Specialty Pattern
    =========================================== */
 
