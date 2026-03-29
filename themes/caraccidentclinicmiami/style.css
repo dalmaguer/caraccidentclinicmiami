@@ -13,3 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: caraccidentclinicmiami
 Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-style
 */
+
+@media (max-width: 781px) {
+    .reverse-on-mobile.wp-block-columns {
+        flex-direction: column-reverse !important;
+    }
+}
+
