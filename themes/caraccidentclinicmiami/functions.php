@@ -8,8 +8,12 @@
 
 define( 'CAC_THEME_VERSION', '1.0.0' );
 
-include_once get_template_directory() . '/includes/theme-setup.php';
 
+// Setup
+include_once get_template_directory() . '/includes/theme-setup.php';
+include_once get_template_directory() . '/includes/enqueue.php';
 include_once get_template_directory() . '/includes/blocks-setup.php';
 
-include_once get_template_directory() . '/includes/enqueue.php';
+
+// Helpers
+include_once get_template_directory() . '/helpers/icons.php';
