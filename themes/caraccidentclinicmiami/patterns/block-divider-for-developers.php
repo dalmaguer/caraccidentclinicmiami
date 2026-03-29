@@ -10,10 +10,8 @@
  */
 
 ?>
-<!-- wp:group {"align":"full","backgroundColor":"primary-dark","isDark":true,"className":"developer-divider alignfull","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-group alignfull is-dark developer-divider has-primary-dark-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
-<!-- wp:paragraph {"align":"center","textColor":"primary-dark","fontSize":"medium"} -->
-<p class="has-text-align-center has-primary-dark-color has-text-color has-medium-font-size">🟢🟢🟢</p>
-<!-- /wp:paragraph -->
-</div>
+<!-- wp:group {"metadata":{"categories":["caraccidentclinicmiami"],"patternName":"caraccidentclinicmiami/block-divider-for-developers","name":"Block Divider for Developers"},"align":"full","className":"is-dark developer-divider","style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}},"backgroundColor":"primary-dark"} -->
+<div class="wp-block-group alignfull is-dark developer-divider has-primary-dark-background-color has-background" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><!-- wp:paragraph {"align":"center","fontSize":"medium"} -->
+<p class="has-text-align-center has-medium-font-size">🟢🟢🟢🟢</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
