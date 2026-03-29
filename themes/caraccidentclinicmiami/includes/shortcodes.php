@@ -9,20 +9,37 @@
 /**
  * Renders the facilities video lightbox modal.
  *
- * Usage: [cac_facilities_modal]
+ * Usage: [cac_facilities_modal video_id="dQw4w9WgXcQ" label="Watch our facility tour"]
  *
+ * @param array $atts {
+ *   @type string $video_id  YouTube video ID. Default 'VIDEO_ID'.
+ *   @type string $label     Accessible label for the dialog. Default 'Video player'.
+ * }
  * @return string Modal HTML and inline JS.
  */
-function cac_render_facilities_modal_shortcode() {
+function cac_render_facilities_modal_shortcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'video_id' => 'VIDEO_ID',
+			'label'    => 'Video player',
+		),
+		$atts,
+		'cac_facilities_modal'
+	);
+
+	$video_id = sanitize_text_field( $atts['video_id'] );
+	$label    = esc_attr( $atts['label'] );
+	$data_src = esc_url( 'https://www.youtube.com/embed/' . $video_id . '?autoplay=1&rel=0' );
+
 	ob_start();
 	?>
-	<div id="cac-facilities-modal" role="dialog" aria-modal="true" aria-label="Video player" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+	<div id="cac-facilities-modal" role="dialog" aria-modal="true" aria-label="<?php echo $label; ?>" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
 		<button onclick="window.closeCacFacilitiesModal&&window.closeCacFacilitiesModal()" aria-label="Close video" style="position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:#fff;font-size:2rem;line-height:1;cursor:pointer;padding:0.5rem;">&times;</button>
 		<div style="position:relative;width:100%;max-width:900px;padding:0 1rem;">
 			<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
 				<iframe id="cac-facilities-video"
 					src=""
-					data-src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&amp;rel=0"
+					data-src="<?php echo $data_src; ?>"
 					allow="autoplay; encrypted-media"
 					allowfullscreen
 					title="Facilities video"
@@ -74,11 +91,24 @@ add_shortcode( 'cac_facilities_modal', 'cac_render_facilities_modal_shortcode' )
 /**
  * Renders the facilities video play button.
  *
- * Usage: [cac_facilities_play_button]
+ * Usage: [cac_facilities_play_button label="Play Video"]
  *
+ * @param array $atts {
+ *   @type string $label  Button text. Default 'Play Video'.
+ * }
  * @return string Button HTML.
  */
-function cac_render_facilities_play_button_shortcode() {
-	return '<button onclick="window.openCacFacilitiesModal&&window.openCacFacilitiesModal()" aria-label="Play video" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.95);border:none;padding:0.625rem 1.125rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.8125rem;color:#111827;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,0.18);z-index:10;"><svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M0 0v12l10-6L0 0z"/></svg>Play Video</button>';
+function cac_render_facilities_play_button_shortcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'label' => 'Play Video',
+		),
+		$atts,
+		'cac_facilities_play_button'
+	);
+
+	$label = esc_html( $atts['label'] );
+
+	return '<button onclick="window.openCacFacilitiesModal&&window.openCacFacilitiesModal()" aria-label="' . esc_attr( $atts['label'] ) . '" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.95);border:none;padding:0.625rem 1.125rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.8125rem;color:#111827;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,0.18);z-index:10;"><svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M0 0v12l10-6L0 0z"/></svg>' . $label . '</button>';
 }
 add_shortcode( 'cac_facilities_play_button', 'cac_render_facilities_play_button_shortcode' );

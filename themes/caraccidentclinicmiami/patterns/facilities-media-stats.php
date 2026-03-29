@@ -39,7 +39,7 @@ $img_url = get_template_directory_uri() . '/assets/images/placeholder_16x9.png';
 <!-- /wp:image -->
 
 <!-- wp:shortcode -->
-[cac_facilities_play_button]
+[cac_facilities_play_button label="Play Video"]
 <!-- /wp:shortcode -->
 
 <!-- wp:columns {"className":"!-mt-14 !gap-0"} -->
@@ -72,7 +72,7 @@ $img_url = get_template_directory_uri() . '/assets/images/placeholder_16x9.png';
 <!-- /wp:columns -->
 
 <!-- wp:shortcode -->
-[cac_facilities_modal]
+[cac_facilities_modal video_id="1MTkZPys7mU?si=iuQGQZjvqvH0dth2" label="Watch our facility tour"]
 <!-- /wp:shortcode --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
