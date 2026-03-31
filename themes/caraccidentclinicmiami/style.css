@@ -98,3 +98,10 @@ Tags: full-site-editing, block-patterns, custom-colors, custom-logo, editor-styl
 #cac-facilities-modal {
     max-width: 100vw;
 }
+
+/* Hide elements on screens smaller than 600px */
+@media (max-width: 600px) {
+    .hide-on-600 {
+        display: none !important;
+    }
+}
