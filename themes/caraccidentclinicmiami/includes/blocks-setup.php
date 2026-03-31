@@ -33,3 +33,21 @@ function cac_register_pattern_categories()
     register_block_pattern_category('caraccidentclinicmiami/dev', ['label' => __('Development', 'caraccidentclinicmiami')]);
 }
 add_action('init', 'cac_register_pattern_categories', 8);
+
+/**
+ * Render a placeholder image for posts that have no featured image set,
+ * so the post-featured-image block never renders empty in query loops.
+ */
+function cac_post_featured_image_fallback( $block_content, $block ) {
+    if ( 'core/post-featured-image' !== $block['blockName'] || ! empty( $block_content ) ) {
+        return $block_content;
+    }
+
+    $fallback_url = get_template_directory_uri() . '/assets/images/placeholder_16x9.png';
+
+    return sprintf(
+        '<figure class="wp-block-post-featured-image"><img src="%s" alt="" style="aspect-ratio:16/9;object-fit:cover;width:100%%;display:block;" /></figure>',
+        esc_url( $fallback_url )
+    );
+}
+add_filter( 'render_block', 'cac_post_featured_image_fallback', 10, 2 );
