@@ -12,7 +12,7 @@
 <div class="wp-block-group alignfull has-light-gray-background-color has-background" style="padding-top:5rem;padding-right:var(--wp--preset--spacing--50);padding-bottom:5rem;padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"layout":{"type":"constrained","contentSize":"600px"}} -->
 <div class="wp-block-group"><!-- wp:group {"className":"!mb-8","style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"default"}} -->
 <div class="wp-block-group !mb-8"><!-- wp:paragraph {"style":{"typography":{"fontSize":"0.75rem","letterSpacing":"0.2em","textTransform":"uppercase","fontWeight":"700"}},"textColor":"primary-dark"} -->
-<p class="has-primary-dark-color has-text-color" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase"><p class="has-primary-dark-color has-text-color" style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase"><strong>Get in Touch</strong></p></p>
+<p class="has-primary-dark-color has-text-color" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase">Get In Touch</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"style":{"typography":{"fontWeight":"800","lineHeight":"1.1","fontSize":"clamp(1.75rem, 4vw, 2.5rem)"}}} -->

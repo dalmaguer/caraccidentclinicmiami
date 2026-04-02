@@ -16,8 +16,8 @@ $image_url = get_template_directory_uri() . '/assets/images/placeholder_landscap
 <h1 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="font-size:clamp(2rem, 5vw, 3.5rem);font-weight:800;line-height:1.15">Page Title</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"light-gray","fontSize":"medium","style":{"spacing":{"margin":{"top":"1rem"}}}} -->
-<p class="has-text-align-center has-light-gray-color has-text-color has-medium-font-size" style="margin-top:1rem">Optional description below the title. Remove this block if not needed.</p>
+<!-- wp:paragraph {"align":"center","className":"lg:!max-w-5/12","textColor":"light-gray","fontSize":"medium","style":{"spacing":{"margin":{"top":"1rem"}}}} -->
+<p class="has-text-align-center lg:!max-w-5/12 has-light-gray-color has-text-color has-medium-font-size" style="margin-top:1rem">Optional description below the title. Remove this block if not needed.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
