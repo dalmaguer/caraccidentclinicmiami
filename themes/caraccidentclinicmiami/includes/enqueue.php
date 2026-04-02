@@ -18,5 +18,46 @@ add_action( 'after_setup_theme', 'cac_editor_styles' );
 // Enqueue front-end styles and scripts.
 function cac_enqueue_assets() {
 	wp_enqueue_style( 'cac-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+
+	// Contact form assets — loaded only when the form is present on the page.
+	wp_register_style(
+		'cac-contact-form',
+		get_stylesheet_directory_uri() . '/assets/css/contact-form.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
+	wp_register_script(
+		'cac-contact-form',
+		get_stylesheet_directory_uri() . '/assets/js/contact-form.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	if ( cac_page_has_contact_form() ) {
+		wp_enqueue_style( 'cac-contact-form' );
+		wp_enqueue_script( 'cac-contact-form' );
+		wp_localize_script(
+			'cac-contact-form',
+			'cacContactForm',
+			array(
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'cac_contact_form_nonce' ),
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'cac_enqueue_assets', 20 );
+
+/**
+ * Check whether the current page contains the contact form pattern.
+ *
+ * @return bool
+ */
+function cac_page_has_contact_form() {
+	global $post;
+	if ( ! $post instanceof WP_Post ) {
+		return false;
+	}
+	return has_block( 'core/html', $post ) && str_contains( $post->post_content, 'cac-contact-form' );
+}

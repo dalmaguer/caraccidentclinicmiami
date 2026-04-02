@@ -1,0 +1,98 @@
+/* =============================================================================
+   Contact Form — Car Accident Clinic Miami
+   ============================================================================= */
+
+.cac-form-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.cac-field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.cac-field-label {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--primary-dark, #1a1a2e);
+}
+
+#cac-contact-form input[type="text"],
+#cac-contact-form input[type="email"],
+#cac-contact-form textarea {
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	font-family: inherit;
+	font-size: 1rem;
+	background-color: #fff;
+	color: inherit;
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+	box-sizing: border-box;
+}
+
+#cac-contact-form input[type="text"]:focus,
+#cac-contact-form input[type="email"]:focus,
+#cac-contact-form textarea:focus {
+	outline: none;
+	border-color: var(--wp--preset--color--primary-dark, #1a1a2e);
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+#cac-contact-form textarea {
+	min-height: 180px;
+	resize: vertical;
+}
+
+/* Required field asterisk */
+.cac-field-label .required {
+	color: #dc2626;
+	margin-left: 2px;
+}
+
+/* Status message */
+.cac-form-status {
+	min-height: 1.4em;
+	font-size: 0.9rem;
+	font-weight: 500;
+	margin-bottom: 0.75rem;
+}
+
+.cac-form-status--success {
+	color: #16a34a;
+}
+
+.cac-form-status--error {
+	color: #dc2626;
+}
+
+/* Submit button */
+.cac-submit-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.75rem 2rem;
+	background-color: var(--wp--preset--color--secondary-light);
+	color: var(--wp--preset--color--primary-dark, #1a1a2e);
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+.cac-submit-btn:hover {
+	opacity: 0.88;
+}
+
+.cac-submit-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
