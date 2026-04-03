@@ -48,7 +48,7 @@ $img_16x9 = get_template_directory_uri() . '/assets/images/placeholder_16x9.png'
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%","className":"flex flex-col justify-start "} -->
-<div class="wp-block-column is-vertically-aligned-center flex flex-col justify-start" style="flex-basis:50%"><!-- wp:group {"className":"cac-doctors-images-flex items-start is-layout-flex wp-block-group-is-layout-flex","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-column is-vertically-aligned-center flex flex-col justify-start" style="flex-basis:50%"><!-- wp:group {"className":"cac-doctors-images-flex items-start ","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group cac-doctors-images-flex items-start is-layout-flex wp-block-group-is-layout-flex"><!-- wp:group {"className":"w-5/12 md:w-4/12 overflow-hidden z-10 !mt-10 md:!mt-20 shadow-xl","layout":{"type":"default"}} -->
 <div class="wp-block-group w-5/12 md:w-4/12 overflow-hidden z-10 !mt-10 md:!mt-20 shadow-xl"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"w-full"} -->
 <figure class="wp-block-image size-full w-full"><img src="<?php echo esc_url($img_square) ?>" alt="Doctor consultation"/></figure>

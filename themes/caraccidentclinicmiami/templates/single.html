@@ -1,29 +1,23 @@
-<!-- wp:template-part {"slug":"header","area":"header"} /-->
+<!-- wp:template-part {"slug":"header","theme":"caraccidentclinicmiami","area":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"flow"}} -->
-<main class="wp-block-group">
+<!-- wp:group {"tagName":"main","className":"cac-single-post","style":{"spacing":{"blockGap":"var:preset|spacing|40","padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"light-gray","layout":{"type":"constrained"}} -->
+<main class="wp-block-group cac-single-post has-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"><!-- wp:post-title {"level":1} /-->
 
-<!-- wp:post-title {"level":1} /-->
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"},"typography":{"fontSize":"0.875rem"}},"textColor":"gray","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"left"}} -->
+<div class="wp-block-group has-gray-color has-text-color" style="font-size:0.875rem"><!-- wp:post-date {"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
 
-<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|30"},"typography":{"fontSize":"0.875rem"}},"textColor":"gray"} -->
-<div class="wp-block-group has-gray-color has-text-color" style="font-size:0.875rem">
-
-<!-- wp:post-date /-->
 <!-- wp:paragraph -->
 <p>·</p>
 <!-- /wp:paragraph -->
-<!-- wp:post-author {"showAvatar":false} /-->
 
-</div>
+<!-- wp:post-author {"showAvatar":false} /--></div>
 <!-- /wp:group -->
 
-<!-- wp:post-featured-image {"align":"wide"} /-->
+<!-- wp:post-featured-image /-->
 
-<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+<!-- wp:post-content {"className":"cac-post-content","layout":{"type":"constrained"}} /-->
 
-<!-- wp:post-terms {"term":"post_tag"} /-->
-
-</main>
+<!-- wp:post-terms {"term":"post_tag"} /--></main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
+<!-- wp:template-part {"slug":"footer","theme":"caraccidentclinicmiami","area":"footer"} /-->

@@ -46,6 +46,18 @@ function cac_enqueue_assets() {
 			)
 		);
 	}
+
+	// Single post styles — loaded only on single post pages.
+	wp_register_style(
+		'cac-single-post',
+		get_stylesheet_directory_uri() . '/assets/css/single-post.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	if ( is_single() ) {
+		wp_enqueue_style( 'cac-single-post' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'cac_enqueue_assets', 20 );
 
