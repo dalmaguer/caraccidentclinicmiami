@@ -1,0 +1,10 @@
+/* ===========================================
+   Medical Process – Registration Steps Pattern
+   =========================================== */
+
+/* Keep step rows horizontal on mobile (they're compact enough) */
+.cac-process-step.wp-block-group {
+    @media (max-width: 781px) {
+        flex-wrap: nowrap !important;
+    }
+}

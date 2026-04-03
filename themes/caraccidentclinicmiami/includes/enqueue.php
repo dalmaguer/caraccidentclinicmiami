@@ -58,6 +58,30 @@ function cac_enqueue_assets() {
 	if ( is_single() ) {
 		wp_enqueue_style( 'cac-single-post' );
 	}
+
+	// Medical Process pattern styles — loaded only when the pattern is present.
+	wp_register_style(
+		'cac-medical-process',
+		get_stylesheet_directory_uri() . '/assets/css/medical-process.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	if ( cac_page_has_medical_process() ) {
+		wp_enqueue_style( 'cac-medical-process' );
+	}
+
+	// Doctors accordion pattern styles — loaded only when the pattern is present.
+	wp_register_style(
+		'cac-doctors-accordion',
+		get_stylesheet_directory_uri() . '/assets/css/doctors-accordion.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	if ( cac_page_has_doctors_accordion() ) {
+		wp_enqueue_style( 'cac-doctors-accordion' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'cac_enqueue_assets', 20 );
 
@@ -72,4 +96,30 @@ function cac_page_has_contact_form() {
 		return false;
 	}
 	return has_shortcode( $post->post_content, 'cac_contact_form' );
+}
+
+/**
+ * Check whether the current page contains the Medical Process pattern.
+ *
+ * @return bool
+ */
+function cac_page_has_medical_process() {
+	global $post;
+	if ( ! $post instanceof WP_Post ) {
+		return false;
+	}
+	return str_contains( $post->post_content, 'cac-process-step' );
+}
+
+/**
+ * Check whether the current page contains the Doctors accordion pattern.
+ *
+ * @return bool
+ */
+function cac_page_has_doctors_accordion() {
+	global $post;
+	if ( ! $post instanceof WP_Post ) {
+		return false;
+	}
+	return str_contains( $post->post_content, 'cac-doctors-accordion' );
 }

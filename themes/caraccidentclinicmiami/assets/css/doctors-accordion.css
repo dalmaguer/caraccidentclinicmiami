@@ -1,0 +1,87 @@
+/* ===========================================
+   Doctors – Expert in Specialty Pattern
+   =========================================== */
+
+.cac-doctors-accordion {
+    & .wp-block-details {
+        border-top: 1px solid #E5E7EB;
+
+        &:last-child {
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        & > summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.125rem 0.75rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #111827;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            transition: background-color 0.25s ease, color 0.25s ease;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &::marker {
+                content: none;
+            }
+
+            /* Plus icon (collapsed state) */
+            &::after {
+                content: '+';
+                font-size: 2rem;
+                font-weight: 300;
+                line-height: 1;
+                color: #6B7280;
+                flex-shrink: 0;
+                margin-left: 1rem;
+                transition: transform 0.35s ease, color 0.25s ease;
+            }
+        }
+
+        & > * + * {
+            margin-top: 0;
+        }
+    }
+
+    /* Active / open state – light blue header background */
+    & details[open] > summary {
+        background-color: #B2C8D5; /* secondary-light */
+        color: #111827;
+
+        /* Minus icon (expanded state) */
+        &::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+    }
+
+    /* --------------------------------------------------
+       Accordion open/close animation (::details-content)
+       Supported: Chrome 131+, Safari 18.2+
+       Fallback:  Firefox uses instant toggle (no change)
+       -------------------------------------------------- */
+    & .cac-accordion-item {
+        &::details-content {
+            overflow: hidden;
+            height: 0;
+            transition: height 0.35s ease, content-visibility 0.35s ease allow-discrete;
+        }
+
+        &[open]::details-content {
+            height: auto;
+        }
+    }
+}
+
+/* Animate the opening from height:0 — must stay at top level */
+@starting-style {
+    .cac-doctors-accordion .cac-accordion-item[open]::details-content {
+        height: 0;
+    }
+}
