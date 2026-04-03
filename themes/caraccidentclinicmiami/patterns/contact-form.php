@@ -18,29 +18,8 @@
 <h2 class="wp-block-heading" style="font-size:clamp(1.75rem, 4vw, 2.5rem);font-weight:800;line-height:1.1">Send us a Message</h2>
 <!-- /wp:heading -->
 
-<!-- wp:html -->
-<form id="cac-contact-form" novalidate>
-	<div class="cac-form-fields">
-		<div class="cac-field-group">
-			<label for="cac-name" class="cac-field-label">Your Name <span class="required" aria-hidden="true">*</span></label>
-			<input id="cac-name" name="name" type="text" placeholder="John Doe" required autocomplete="name" />
-		</div>
-		<div class="cac-field-group">
-			<label for="cac-email" class="cac-field-label">Email <span class="required" aria-hidden="true">*</span></label>
-			<input id="cac-email" name="email" type="email" placeholder="email@domain.com" required autocomplete="email" />
-		</div>
-		<div class="cac-field-group">
-			<label for="cac-subject" class="cac-field-label">Subject</label>
-			<input id="cac-subject" name="subject" type="text" placeholder="How can we help?" autocomplete="off" />
-		</div>
-		<div class="cac-field-group">
-			<label for="cac-message" class="cac-field-label">Message <span class="required" aria-hidden="true">*</span></label>
-			<textarea id="cac-message" name="message" placeholder="Your message here..." required rows="6"></textarea>
-		</div>
-	</div>
-	<div id="cac-form-status" class="cac-form-status" role="status" aria-live="polite"></div>
-	<button type="submit" class="cac-submit-btn">Send Message</button>
-</form>
-<!-- /wp:html --></div>
+<!-- wp:shortcode -->
+[cac_contact_form]
+<!-- /wp:shortcode --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->

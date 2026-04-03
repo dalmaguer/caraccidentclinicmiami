@@ -112,3 +112,40 @@ function cac_render_facilities_play_button_shortcode( $atts ) {
 	return '<button onclick="window.openCacFacilitiesModal&&window.openCacFacilitiesModal()" aria-label="' . esc_attr( $atts['label'] ) . '" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.95);border:none;padding:0.625rem 1.125rem;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.8125rem;color:#111827;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,0.18);z-index:10;"><svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M0 0v12l10-6L0 0z"/></svg>' . $label . '</button>';
 }
 add_shortcode( 'cac_facilities_play_button', 'cac_render_facilities_play_button_shortcode' );
+
+/**
+ * Renders the AJAX-powered contact form.
+ *
+ * Usage: [cac_contact_form]
+ *
+ * @return string Form HTML.
+ */
+function cac_render_contact_form_shortcode() {
+	ob_start();
+	?>
+	<form id="cac-contact-form" novalidate>
+		<div class="cac-form-fields">
+			<div class="cac-field-group">
+				<label for="cac-name" class="cac-field-label">Your Name <span class="required" aria-hidden="true">*</span></label>
+				<input id="cac-name" name="name" type="text" placeholder="John Doe" required autocomplete="name" />
+			</div>
+			<div class="cac-field-group">
+				<label for="cac-email" class="cac-field-label">Email <span class="required" aria-hidden="true">*</span></label>
+				<input id="cac-email" name="email" type="email" placeholder="email@domain.com" required autocomplete="email" />
+			</div>
+			<div class="cac-field-group">
+				<label for="cac-subject" class="cac-field-label">Subject</label>
+				<input id="cac-subject" name="subject" type="text" placeholder="How can we help?" autocomplete="off" />
+			</div>
+			<div class="cac-field-group">
+				<label for="cac-message" class="cac-field-label">Message <span class="required" aria-hidden="true">*</span></label>
+				<textarea id="cac-message" name="message" placeholder="Your message here..." required rows="6"></textarea>
+			</div>
+		</div>
+		<div id="cac-form-status" class="cac-form-status" role="status" aria-live="polite"></div>
+		<button type="submit" class="cac-submit-btn">Send Message</button>
+	</form>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'cac_contact_form', 'cac_render_contact_form_shortcode' );

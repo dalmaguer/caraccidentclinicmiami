@@ -59,5 +59,5 @@ function cac_page_has_contact_form() {
 	if ( ! $post instanceof WP_Post ) {
 		return false;
 	}
-	return has_block( 'core/html', $post ) && str_contains( $post->post_content, 'cac-contact-form' );
+	return has_shortcode( $post->post_content, 'cac_contact_form' );
 }
