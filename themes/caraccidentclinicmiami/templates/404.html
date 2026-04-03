@@ -1,9 +1,7 @@
-<!-- wp:template-part {"slug":"header","area":"header"} /-->
+<!-- wp:template-part {"slug":"header","theme":"caraccidentclinicmiami","area":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"default"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90"}}}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--90);padding-bottom:var(--wp--preset--spacing--90)">
-
-<!-- wp:heading {"level":1,"textAlign":"center","fontSize":"huge"} -->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90"}}},"backgroundColor":"light-gray","layout":{"type":"default"}} -->
+<main class="wp-block-group has-light-gray-background-color has-background" style="padding-top:var(--wp--preset--spacing--90);padding-bottom:var(--wp--preset--spacing--90)"><!-- wp:heading {"textAlign":"center","level":1,"fontSize":"huge"} -->
 <h1 class="wp-block-heading has-text-align-center has-huge-font-size">404</h1>
 <!-- /wp:heading -->
 
@@ -15,17 +13,11 @@
 <p class="has-text-align-center">The page you're looking for doesn't exist or has been moved. Try searching or return to the homepage.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)">
-
-<!-- wp:button {"backgroundColor":"primary-dark","textColor":"white"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-primary-dark-background-color has-text-color has-background wp-element-button" href="/">Go Home</a></div>
-<!-- /wp:button -->
-
-</div>
-<!-- /wp:buttons -->
-
-</main>
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:button {"backgroundColor":"secondary-light","textColor":"primary-dark","className":"hide-on-600","style":{"border":{"radius":"6px"}}} -->
+<div class="wp-block-button hide-on-600"><a class="wp-block-button__link has-primary-dark-color has-secondary-light-background-color has-text-color has-background wp-element-button" href="/" style="border-radius:6px">Go Home</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
+<!-- wp:template-part {"slug":"footer","theme":"caraccidentclinicmiami","area":"footer"} /-->
