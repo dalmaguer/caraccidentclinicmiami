@@ -4,7 +4,7 @@
 	"settings": {
 		"appearanceTools": true,
 		"layout": {
-			"contentSize": "calc(min(100vw, 1200px) - 4rem)",
+			"contentSize": "calc(min(100vw, 1200px) - 2rem)",
 			"wideSize": "1920px"
 		},
 		"useRootPaddingAwareAlignments": true,

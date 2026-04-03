@@ -5,7 +5,13 @@
         object-fit: cover;
     }
     .cac-post-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
 
+        h1, h2, h3, p, ul, ol {
+            margin-left: 0 !important;
+        }
     }
 }
-
