@@ -8,10 +8,10 @@
  * Block Types: core/cover
  * Post Types: page
  */
-$image_url = get_template_directory_uri() . '/assets/images/placeholder_landscape.png';
+$img_url = get_template_directory_uri() . '/assets/images/placeholder_landscape.png';
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( $image_url ); ?>","dimRatio":30,"overlayColor":"primary-dark","focalPoint":{"x":0.86,"y":0.54},"minHeight":600,"minHeightUnit":"px","isDark":true,"align":"full","className":"hero-dark-theme","style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-cover alignfull is-dark hero-dark-theme" style="padding-top:var(--wp--preset--spacing--90);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--90);padding-left:var(--wp--preset--spacing--50);min-height:600px"><span aria-hidden="true" class="wp-block-cover__background has-primary-dark-background-color has-background-dim-30 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $image_url ); ?>" style="object-position:86% 54%" data-object-fit="cover" data-object-position="86% 54%"/>
+<!-- wp:cover {"url":"<?php echo esc_url( $img_url ); ?>","dimRatio":30,"overlayColor":"primary-dark","focalPoint":{"x":0.86,"y":0.54},"minHeight":600,"minHeightUnit":"px","isDark":true,"align":"full","className":"hero-dark-theme","style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-cover alignfull is-dark hero-dark-theme" style="padding-top:var(--wp--preset--spacing--90);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--90);padding-left:var(--wp--preset--spacing--50);min-height:600px"><span aria-hidden="true" class="wp-block-cover__background has-primary-dark-background-color has-background-dim-30 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $img_url ); ?>" style="object-position:86% 54%" data-object-fit="cover" data-object-position="86% 54%"/>
 <div class="wp-block-cover__inner-container">
 
 <!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->

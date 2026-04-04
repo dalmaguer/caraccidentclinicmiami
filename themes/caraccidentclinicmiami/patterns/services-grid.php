@@ -7,14 +7,14 @@
  * Keywords: services, grid, cards, doctor, image, general care, emergency, dental, diagnostic
  * Post Types: page
  */
-$image_url = get_template_directory_uri() . '/assets/images/placeholder_square.png';
+$img_url = get_template_directory_uri() . '/assets/images/placeholder_square.png';
 ?>
 <!-- wp:group {"metadata":{"categories":["caraccidentclinicmiami/services"],"patternName":"caraccidentclinicmiami/services-grid","name":"Services Grid"},"align":"full","style":{"spacing":{"padding":{"top":"0","bottom":"4rem","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"white"} -->
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:0;padding-right:var(--wp--preset--spacing--50);padding-bottom:4rem;padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->
 <div class="wp-block-group"><!-- wp:columns {"className":"!items-stretch","style":{"spacing":{"blockGap":{"top":"0","left":"var:preset|spacing|60"}}}} -->
 <div class="wp-block-columns !items-stretch"><!-- wp:column {"width":"42%","className":"overflow-hidden"} -->
-<div class="wp-block-column overflow-hidden" style="flex-basis:42%"><!-- wp:cover {"url":"<?php echo esc_url($image_url) ?>","dimRatio":0,"minHeight":0,"minHeightUnit":"px","contentPosition":"center center","isDark":false,"className":"!h-full min-h-96","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
-<div class="wp-block-cover is-light !h-full min-h-96" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_html($image_url) ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<div class="wp-block-column overflow-hidden" style="flex-basis:42%"><!-- wp:cover {"url":"<?php echo esc_url($img_url); ?>","dimRatio":0,"minHeight":0,"minHeightUnit":"px","contentPosition":"center center","isDark":false,"className":"!h-full min-h-96","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
+<div class="wp-block-cover is-light !h-full min-h-96" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url($img_url); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
 <p class="has-text-align-center has-large-font-size"></p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover --></div>
