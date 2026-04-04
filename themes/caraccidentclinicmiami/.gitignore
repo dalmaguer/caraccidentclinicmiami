@@ -2,3 +2,6 @@ node_modules/
 
 # Tailwind DB content dump — regenerated on every build, not committed
 bin/content-scan.html
+
+# Vendor JS files — copied from node_modules by `npm run build`
+assets/js/gsap.min.js

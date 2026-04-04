@@ -4,11 +4,15 @@
   "description": "Tailwind CSS build for Car Accident Clinic Miami block theme",
   "private": true,
   "scripts": {
-    "build": "npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --minify",
-    "dev": "npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --watch",
-    "dump": "bash bin/dump-content.sh"
+    "build": "npm run copy-assets && npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --minify",
+    "dev": "npm run copy-assets && npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --watch",
+    "dump": "bash bin/dump-content.sh",
+    "copy-assets": "cp node_modules/gsap/dist/gsap.min.js assets/js/gsap.min.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2"
   }
 }

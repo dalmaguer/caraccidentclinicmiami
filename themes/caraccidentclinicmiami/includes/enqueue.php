@@ -28,6 +28,22 @@ function cac_enqueue_assets() {
 
 	wp_enqueue_style( 'cac-style', get_stylesheet_uri(), array( 'cac-tailwind' ), wp_get_theme()->get( 'Version' ) );
 
+	// GSAP + heading entrance animations (frontend only, deferred).
+	wp_enqueue_script(
+		'gsap',
+		get_stylesheet_directory_uri() . '/assets/js/gsap.min.js',
+		array(),
+		'3.12.5',
+		true
+	);
+	wp_enqueue_script(
+		'cac-animations',
+		get_stylesheet_directory_uri() . '/assets/js/cac-animations.js',
+		array( 'gsap' ),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
 	// Contact form assets — loaded only when the form is present on the page.
 	wp_register_style(
 		'cac-contact-form',
