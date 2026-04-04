@@ -1,10 +1,14 @@
 /**
  * cac-animations.js
  *
- * Subtle entrance animations for section headings.
- * Words slide up and fade in from below as each heading enters the viewport.
- * Animates once per heading, then stops observing.
- * Fully skipped when the user has requested reduced motion.
+ * Entrance animations for key page elements:
+ *   1. Section headings   — word-by-word reveal from below (curtain effect)
+ *   2. Service card grids — staggered cards fade + slide up as grid enters view
+ *   3. Process steps      — sequential reveal as the steps section enters view
+ *
+ * Every animation:
+ *   - Fires once when the element enters the viewport, then stops observing
+ *   - Is completely skipped when the user prefers reduced motion
  *
  * Depends on: GSAP (loaded as a separate script before this file).
  */
@@ -21,44 +25,71 @@
 		return;
 	}
 
+	// Signal to the inline head script that this file loaded and initialised
+	// successfully — prevents the fail-safe from removing .cac-anim-js early.
+	window.__cacAnimReady = true;
+
+	// ─── Shared helper ───────────────────────────────────────────────────────
+
 	/**
-	 * Splits an element's text content into per-word spans, preserving any
-	 * inline child elements (e.g. <a>, <strong>, <em>).
+	 * Observe `el` and fire `callback` exactly once when it enters the viewport.
 	 *
-	 * Each word is wrapped in:
-	 *   <span style="overflow:hidden"> ← clips the sliding word
-	 *     <span class="gsap-word">word</span>  ← the animated element
+	 * @param {Element}  el
+	 * @param {Function} callback  Called with the IntersectionObserverEntry.
+	 * @param {Object}   [options] IntersectionObserver options override.
+	 */
+	function observeOnce( el, callback, options ) {
+		var defaults = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+		var opts = Object.assign( {}, defaults, options || {} );
+
+		var io = new IntersectionObserver( function ( entries, observer ) {
+			entries.forEach( function ( entry ) {
+				if ( ! entry.isIntersecting ) return;
+				callback( entry );
+				observer.unobserve( entry.target );
+			} );
+		}, opts );
+
+		io.observe( el );
+	}
+
+	// ─── 1. Heading word-reveal ───────────────────────────────────────────────
+
+	/**
+	 * Splits an element's text into per-word spans, preserving inline children.
+	 *
+	 * Structure per word:
+	 *   <span style="overflow:hidden">   ← clips during animation
+	 *     <span class="gsap-word">…</span>
 	 *   </span>
 	 *
-	 * @param {Element} el
-	 * @returns {Element[]} Array of inner .gsap-word spans to animate.
+	 * @param  {Element}   el
+	 * @returns {Element[]} Inner .gsap-word spans to animate.
 	 */
 	function splitIntoWordSpans( el ) {
 		var wordSpans = [];
-
-		// Work on a snapshot of child nodes because we mutate the DOM in the loop.
-		var nodes = Array.prototype.slice.call( el.childNodes );
+		var nodes     = Array.prototype.slice.call( el.childNodes );
 
 		nodes.forEach( function ( node ) {
 			if ( node.nodeType === Node.TEXT_NODE ) {
-				var text  = node.textContent;
-				var parts = text.split( /(\s+)/ ); // keeps whitespace tokens
+				var parts    = node.textContent.split( /(\s+)/ );
 				var fragment = document.createDocumentFragment();
 
 				parts.forEach( function ( part ) {
 					if ( ! part.trim() ) {
-						// Plain whitespace — keep as-is so words don't collapse.
 						fragment.appendChild( document.createTextNode( part ) );
 						return;
 					}
 
 					var outer = document.createElement( 'span' );
-					outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;';
+					outer.style.cssText =
+						'display:inline-block;overflow:hidden;' +
+						'vertical-align:bottom;line-height:inherit;';
 
 					var inner = document.createElement( 'span' );
-					inner.className  = 'gsap-word';
-					inner.style.cssText = 'display:inline-block;';
-					inner.textContent = part;
+					inner.className    = 'gsap-word';
+					inner.style.cssText = 'display:inline-block;will-change:transform;';
+					inner.textContent  = part;
 
 					outer.appendChild( inner );
 					fragment.appendChild( outer );
@@ -68,9 +99,8 @@
 				node.parentNode.replaceChild( fragment, node );
 
 			} else if ( node.nodeType === Node.ELEMENT_NODE ) {
-				// Recursively split words inside inline elements (links, bold, etc.).
 				var childSpans = splitIntoWordSpans( node );
-				wordSpans = wordSpans.concat( childSpans );
+				wordSpans      = wordSpans.concat( childSpans );
 			}
 		} );
 
@@ -81,75 +111,103 @@
 
 	document.addEventListener( 'DOMContentLoaded', function () {
 
-		// Target headings inside <main> content only — excludes header and footer.
-		var headings = document.querySelectorAll(
-			'main .wp-block-heading'
-		);
+		// ── 1a. Heading word reveal ──────────────────────────────────────────
 
-		if ( ! headings.length ) {
-			return;
-		}
-
-		// Map each heading element → its array of word spans.
-		var headingWordMap = new Map();
+		var headings = document.querySelectorAll( 'main .wp-block-heading' );
 
 		headings.forEach( function ( heading ) {
 			var wordSpans = splitIntoWordSpans( heading );
+			if ( ! wordSpans.length ) return;
 
-			if ( ! wordSpans.length ) {
-				return;
-			}
+			// Words start below the overflow:hidden clip — heading looks empty.
+			gsap.set( wordSpans, { y: '110%' } );
 
-			// Set initial hidden state — words sit below the clip boundary.
-			gsap.set( wordSpans, { y: '105%', opacity: 0 } );
+			// Now safe to reveal the heading element itself: text is clipped,
+			// so there is no flash of visible content before the animation runs.
+			gsap.set( heading, { opacity: 1 } );
 
-			headingWordMap.set( heading, wordSpans );
+			observeOnce(
+				heading,
+				function () {
+					// expo.out: fast off the mark, silky deceleration.
+					gsap.to( wordSpans, {
+						y:          '0%',
+						duration:   0.8,
+						stagger:    0.055,
+						ease:       'expo.out',
+						clearProps: 'transform',
+					} );
+				},
+				{ threshold: 0.3, rootMargin: '0px 0px -40px 0px' }
+			);
 		} );
 
-		if ( ! headingWordMap.size ) {
-			return;
+		// ── 2. Service card grid cascade ──────────────────────────────────────
+		// Targets: direct .wp-block-group children of any .wp-block-group.grid
+		// container inside <main>. This matches the services-cards-grid and
+		// services-grid patterns.
+
+		var cardGrids = document.querySelectorAll( 'main .wp-block-group.grid' );
+
+		cardGrids.forEach( function ( grid ) {
+			var cards = Array.prototype.slice.call(
+				grid.querySelectorAll( ':scope > .wp-block-group' )
+			);
+			if ( ! cards.length ) return;
+
+			gsap.set( cards, { opacity: 0, y: 44 } );
+
+			observeOnce(
+				grid,
+				function () {
+					gsap.to( cards, {
+						opacity:    1,
+						y:          0,
+						duration:   0.65,
+						stagger:    0.1,
+						ease:       'power3.out',
+						clearProps: 'transform,opacity',
+					} );
+				},
+				{ threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+			);
+		} );
+
+		// ── 3. Process steps sequential reveal ───────────────────────────────
+		// Groups all .cac-process-step siblings by their parent so the stagger
+		// triggers as a coordinated cascade when the section scrolls into view.
+
+		var steps = document.querySelectorAll( 'main .cac-process-step' );
+
+		if ( steps.length ) {
+			var parentMap = new Map();
+
+			steps.forEach( function ( step ) {
+				var parent = step.parentElement;
+				if ( ! parentMap.has( parent ) ) parentMap.set( parent, [] );
+				parentMap.get( parent ).push( step );
+			} );
+
+			parentMap.forEach( function ( stepList, container ) {
+				gsap.set( stepList, { opacity: 0, x: -28 } );
+
+				observeOnce(
+					container,
+					function () {
+						gsap.to( stepList, {
+							opacity:    1,
+							x:          0,
+							duration:   0.7,
+							stagger:    0.15,
+							ease:       'power3.out',
+							clearProps: 'transform,opacity',
+						} );
+					},
+					{ threshold: 0.15, rootMargin: '0px 0px -30px 0px' }
+				);
+			} );
 		}
 
-		// ─── IntersectionObserver ────────────────────────────────────────────
-
-		var observer = new IntersectionObserver(
-			function ( entries ) {
-				entries.forEach( function ( entry ) {
-					if ( ! entry.isIntersecting ) {
-						return;
-					}
-
-					var wordSpans = headingWordMap.get( entry.target );
-					if ( ! wordSpans ) {
-						return;
-					}
-
-					// Animate words up into view, staggered left → right.
-					gsap.to( wordSpans, {
-						y: '0%',
-						opacity: 1,
-						duration: 0.65,
-						stagger: 0.04,
-						ease: 'power2.out',
-						clearProps: 'transform,opacity', // clean up inline styles once done
-					} );
-
-					// Trigger once only.
-					observer.unobserve( entry.target );
-					headingWordMap.delete( entry.target );
-				} );
-			},
-			{
-				// Fire when 25% of the heading is visible and at least 40px
-				// above the bottom edge of the viewport — avoids firing too late.
-				threshold: 0.25,
-				rootMargin: '0px 0px -40px 0px',
-			}
-		);
-
-		headingWordMap.forEach( function ( _spans, heading ) {
-			observer.observe( heading );
-		} );
 	} );
 
 } )();

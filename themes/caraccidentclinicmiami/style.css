@@ -24,6 +24,19 @@ h1 {
     line-height:1.15;
 }
 
+/*
+ * Heading pre-animation state.
+ * Applied only when:
+ *   - JS is active (.cac-anim-js set by an inline <head> script before paint)
+ *   - The user has not requested reduced motion
+ * Falls back to fully visible if JS fails or reduced motion is on.
+ */
+@media (prefers-reduced-motion: no-preference) {
+    .cac-anim-js .wp-block-heading {
+        opacity: 0;
+    }
+}
+
 p {
     text-wrap: pretty;
 }

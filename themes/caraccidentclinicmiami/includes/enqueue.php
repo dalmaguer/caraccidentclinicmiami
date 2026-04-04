@@ -111,6 +111,34 @@ function cac_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'cac_enqueue_assets', 20 );
 
 /**
+ * Inline <head> script for heading animation setup.
+ *
+ * Adds .cac-anim-js to <html> synchronously before any body content is
+ * painted, so the CSS opacity:0 rule takes effect before headings render
+ * — preventing any flash of visible text before the word-clip is in place.
+ *
+ * A `load` event fail-safe removes the class if the animation script never
+ * initialises (e.g. network error), so headings are never permanently hidden.
+ */
+function cac_animation_head_script() {
+	?>
+	<script>
+	(function(){
+		if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+			document.documentElement.classList.add('cac-anim-js');
+			window.addEventListener('load',function(){
+				if(!window.__cacAnimReady){
+					document.documentElement.classList.remove('cac-anim-js');
+				}
+			});
+		}
+	})();
+	</script>
+	<?php
+}
+add_action( 'wp_head', 'cac_animation_head_script', 1 );
+
+/**
  * Check whether the current page contains the contact form pattern.
  *
  * @return bool
