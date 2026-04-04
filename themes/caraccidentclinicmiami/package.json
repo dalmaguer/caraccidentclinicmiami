@@ -1,0 +1,14 @@
+{
+  "name": "caraccidentclinicmiami",
+  "version": "1.0.0",
+  "description": "Tailwind CSS build for Car Accident Clinic Miami block theme",
+  "private": true,
+  "scripts": {
+    "build": "npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --minify",
+    "dev": "npm run dump && tailwindcss -i ./assets/css/tailwind.src.css -o ./assets/css/tailwind.css --watch",
+    "dump": "bash bin/dump-content.sh"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

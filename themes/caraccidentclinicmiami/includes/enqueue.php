@@ -11,13 +11,22 @@
  */
 function cac_editor_styles() {
 	add_editor_style( 'assets/css/editor.css' );
+	add_editor_style( 'assets/css/tailwind.css' );
 	add_editor_style( 'style.css' );
 }
 add_action( 'after_setup_theme', 'cac_editor_styles' );
 
 // Enqueue front-end styles and scripts.
 function cac_enqueue_assets() {
-	wp_enqueue_style( 'cac-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+	// Tailwind CSS — compiled static file, loaded early to prevent layout shift.
+	wp_enqueue_style(
+		'cac-tailwind',
+		get_stylesheet_directory_uri() . '/assets/css/tailwind.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
+
+	wp_enqueue_style( 'cac-style', get_stylesheet_uri(), array( 'cac-tailwind' ), wp_get_theme()->get( 'Version' ) );
 
 	// Contact form assets — loaded only when the form is present on the page.
 	wp_register_style(

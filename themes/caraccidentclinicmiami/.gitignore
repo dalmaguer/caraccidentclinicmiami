@@ -1,1 +1,4 @@
 node_modules/
+
+# Tailwind DB content dump — regenerated on every build, not committed
+bin/content-scan.html
