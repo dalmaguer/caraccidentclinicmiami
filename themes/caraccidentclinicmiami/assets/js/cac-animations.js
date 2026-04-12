@@ -111,6 +111,34 @@
 
 	document.addEventListener( 'DOMContentLoaded', function () {
 
+		// ── 0. Header entrance — slide content down from above ────────────────
+		// The <header> element keeps its full height (space preserved). Only the
+		// inner content slides in. overflow:hidden on the header clips the
+		// out-of-bounds travel; it is removed after the animation completes.
+
+		var siteHeader = document.querySelector( 'header.wp-block-template-part' );
+
+		if ( siteHeader ) {
+			var headerInner = siteHeader.querySelector( ':scope > .wp-block-group' );
+
+			if ( headerInner ) {
+				// CSS already sets translateY(-100%) and overflow:hidden via
+				// .cac-anim-js — animate TO the resting position instead.
+				gsap.to( headerInner, {
+					y:        0,
+					duration: 0.7,
+					ease:     'power3.out',
+					onComplete: function () {
+						// Override the CSS transform rule with an inline style
+						// instead of clearProps, which would re-expose the CSS
+						// translateY(-100%) and hide the header again.
+						headerInner.style.transform = 'none';
+						siteHeader.style.overflow   = 'visible';
+					},
+				} );
+			}
+		}
+
 		// ── 1a. Heading word reveal ──────────────────────────────────────────
 
 		var headings = document.querySelectorAll( 'main .wp-block-heading' );

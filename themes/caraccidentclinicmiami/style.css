@@ -35,6 +35,16 @@ h1 {
     .cac-anim-js .wp-block-heading {
         opacity: 0;
     }
+
+    /* Clip the header and pre-position the inner content off-screen above.
+       overflow:hidden keeps the page layout intact while the content is
+       translated up. After the animation, JS sets overflow:visible inline. */
+    .cac-anim-js header.wp-block-template-part {
+        overflow: hidden;
+    }
+    .cac-anim-js header.wp-block-template-part > .wp-block-group {
+        transform: translateY(-100%);
+    }
 }
 
 p {
