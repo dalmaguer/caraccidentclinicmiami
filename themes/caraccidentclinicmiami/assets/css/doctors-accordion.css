@@ -85,3 +85,15 @@
         height: 0;
     }
 }
+
+/* When GSAP is active (.cac-anim-js on <html>), disable the native
+   CSS ::details-content transition — GSAP controls the panel height. */
+.cac-anim-js .cac-doctors-accordion .cac-accordion-item::details-content {
+    height: unset;
+    transition: none;
+}
+
+/* GSAP body wrapper — ensures the animated div fills available width */
+.cac-accordion-body {
+    overflow: hidden;
+}

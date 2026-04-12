@@ -132,9 +132,9 @@
 					// expo.out: fast off the mark, silky deceleration.
 					gsap.to( wordSpans, {
 						y:          '0%',
-						duration:   0.8,
-						stagger:    0.055,
-						ease:       'expo.out',
+						duration:   0.7,
+						stagger:    0.1,
+						ease:       'power4.out',
 						clearProps: 'transform',
 					} );
 				},
@@ -147,7 +147,7 @@
 		// container inside <main>. This matches the services-cards-grid and
 		// services-grid patterns.
 
-		var cardGrids = document.querySelectorAll( 'main .wp-block-group.grid' );
+		var cardGrids = document.querySelectorAll( 'main .wp-block-group.grid:not(.cac-no-card-anim)' );
 
 		cardGrids.forEach( function ( grid ) {
 			var cards = Array.prototype.slice.call(
@@ -207,6 +207,67 @@
 				);
 			} );
 		}
+
+		// ── 4. Accordion panel open/close animation ───────────────────────────
+		// Targets: .cac-accordion-item (<details> blocks). Intercepts summary
+		// clicks, wraps the body content in a div, and uses GSAP to animate
+		// height on expand and collapse. The CSS ::details-content transition
+		// is suppressed via .cac-anim-js in doctors-accordion.css.
+
+		var accordionItems = document.querySelectorAll( '.cac-accordion-item' );
+
+		accordionItems.forEach( function ( details ) {
+			var summary = details.querySelector( 'summary' );
+			if ( ! summary ) return;
+
+			// Collect all non-summary child nodes and move them into a wrapper
+			// div so we have a single element to animate height on.
+			var bodyNodes = Array.prototype.slice.call( details.childNodes ).filter( function ( n ) {
+				return n !== summary;
+			} );
+
+			var bodyWrap = document.createElement( 'div' );
+			bodyWrap.className = 'cac-accordion-body';
+			bodyNodes.forEach( function ( n ) { bodyWrap.appendChild( n ); } );
+			details.appendChild( bodyWrap );
+
+			// Set initial state: collapsed panels start at height 0.
+			if ( ! details.open ) {
+				gsap.set( bodyWrap, { height: 0, overflow: 'hidden' } );
+			}
+
+			summary.addEventListener( 'click', function ( e ) {
+				e.preventDefault();
+
+				if ( details.open ) {
+					// ── Closing ──────────────────────────────────────────────
+					gsap.to( bodyWrap, {
+						height:   0,
+						duration: 0.35,
+						ease:     'power3.in',
+						onComplete: function () {
+							details.removeAttribute( 'open' );
+							gsap.set( bodyWrap, { overflow: 'hidden' } );
+						},
+					} );
+				} else {
+					// ── Opening ──────────────────────────────────────────────
+					details.setAttribute( 'open', '' );
+					gsap.fromTo(
+						bodyWrap,
+						{ height: 0, overflow: 'hidden' },
+						{
+							height:   'auto',
+							duration: 0.4,
+							ease:     'power3.out',
+							onComplete: function () {
+								gsap.set( bodyWrap, { overflow: 'visible' } );
+							},
+						}
+					);
+				}
+			} );
+		} );
 
 	} );
 
