@@ -141,7 +141,7 @@
 
 		// ── 1a. Heading word reveal ──────────────────────────────────────────
 
-		var headings = document.querySelectorAll( 'main .wp-block-heading' );
+		var headings = document.querySelectorAll( 'main h1.wp-block-heading, main h2.wp-block-heading' );
 
 		headings.forEach( function ( heading ) {
 			var wordSpans = splitIntoWordSpans( heading );

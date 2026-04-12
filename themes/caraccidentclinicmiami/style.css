@@ -32,7 +32,8 @@ h1 {
  * Falls back to fully visible if JS fails or reduced motion is on.
  */
 @media (prefers-reduced-motion: no-preference) {
-    .cac-anim-js .wp-block-heading {
+    .cac-anim-js h1.wp-block-heading,
+    .cac-anim-js h2.wp-block-heading {
         opacity: 0;
     }
 
